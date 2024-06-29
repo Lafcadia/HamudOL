@@ -1,1 +1,4 @@
 Flask==3.0.0
+pytest-runner
+pypinyin
+gTTS
