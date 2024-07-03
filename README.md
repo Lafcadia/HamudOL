@@ -6,4 +6,6 @@ This is a serverless `Hamud-Language` Translator written in Python and uses Goog
 
 # Usage
 
-- https://hamud-ol.vercel.app/sound?text=(the text needed to be translated)
+- https://hamud-ol.vercel.app/sound?text= (the text needed to be translated)
+
+- https://hamud-ol.vercel.app/ (Try out the new webpage written)
