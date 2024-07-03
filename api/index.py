@@ -2,12 +2,13 @@ from flask import Flask, send_file, request, render_template
 import io
 import gtts
 import pypinyin
+import os
 app = Flask(__name__)
-
+sep = os.path.sep
 
 @app.route('/')
 def home():
-    return render_template('./index.html')
+    return render_template('main.html')
 
 
 @app.route('/sound')
