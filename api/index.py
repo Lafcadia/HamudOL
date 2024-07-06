@@ -1,8 +1,8 @@
 from flask import Flask, send_file, request, render_template
 import io
 import gtts
-import pypinyin
 import os
+from pydub import AudioSegment
 app = Flask(__name__)
 sep = os.path.sep
 
@@ -14,17 +14,16 @@ def home():
 @app.route('/sound')
 def background_process():
     original = request.args.get("text")
-    new = original[::-1]
-    pyin = pypinyin.core.lazy_pinyin(new)
-    for i in pyin:
-        pyin[pyin.index(i)] = i[::-1]
-    print(pyin)
-    txt = "".join(pyin)
-    sound1 = gtts.gTTS(text=txt, lang='en', slow=False)
+    print(original)
+    sound1 = gtts.gTTS(text=original, lang='zh-CN', slow=False)
     sound = io.BytesIO()
     sound1.write_to_fp(sound)
     sound.seek(0)
-    return send_file(sound, mimetype="audio/wav")
+    original_audio = AudioSegment.from_file(sound, "wav")
+    backward = original_audio.reverse()
+    real = io.BytesIO()
+    backward.export(real, format="wav")
+    return send_file(real, mimetype="audio/wav")
 
 
 if __name__ == '__main__':
