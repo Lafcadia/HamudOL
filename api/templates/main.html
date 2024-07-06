@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .box {
+            width: 600px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A Hamud Language translation page">
@@ -14,7 +19,7 @@
         function translatexxx() {
             const chineseText = document.getElementById('chineseText').value;
             const Http = new XMLHttpRequest();
-            const url = 'https://hamud.chuishen.xyz/sound?text=' + chineseText;
+            const url = 'http://hamud.chuishen.xyz:2333/sound?text=' + chineseText;
             document.getElementById("hamudAudio").src = url;
             alert('Translation Complete! Press the play button to listen to the translation.\n翻译完成! 点击播放按钮倾听古 (歌) 神之音。')
         }
